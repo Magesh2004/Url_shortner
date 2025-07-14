@@ -78,3 +78,14 @@ module.exports.DeleteUrl = async(req,res)=>{
     })
     sendResponse(res,204,{message:"date deleted"})
 }
+
+module.exports.GetStats = async(req,res)=>{
+    const {shUrl} = req.params;
+    const data = await prisma.shortUrl.findUnique({
+        where:{
+            shortUrl:shUrl  
+        }
+    })
+    if(!data)return sendResponse(res,404,{message:"Not found"})
+    sendResponse(res,200,data)
+}

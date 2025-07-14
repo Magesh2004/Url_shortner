@@ -14,4 +14,6 @@ router.route('/shorten/:shUrl')
 .put(catchAsync(url.UpdateUrl))
 .delete(catchAsync(url.DeleteUrl))
 
+router.get('/shorten/:shUrl/stats',catchAsync(url.GetStats))
+
 module.exports = router
