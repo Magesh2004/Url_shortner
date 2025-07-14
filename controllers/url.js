@@ -32,7 +32,7 @@ module.exports.FetchUrl = async(req,res)=>{
             shortUrl:shUrl
         }
     })
-    if(!data)return sendResponse(res,404,{message:"date not found"})
+    if(!data)return sendResponse(res,404,{message:"Not found"})
     await prisma.shortUrl.update({
         where:{
             shortUrl:shUrl
@@ -51,7 +51,7 @@ module.exports.UpdateUrl = async(req,res)=>{
             shortUrl:shUrl
         }
     });
-    if(!existUrl)return sendResponse(res,404,{message:"date not found"})
+    if(!existUrl)return sendResponse(res,404,{message:"Not found"})
     const updatedUrl = await prisma.shortUrl.update({
         where:{
             shortUrl:shUrl
@@ -70,7 +70,7 @@ module.exports.DeleteUrl = async(req,res)=>{
             shortUrl:shUrl
         }
     });
-    if(!existUrl)return sendResponse(res,404,{message:"date not found"})
+    if(!existUrl)return sendResponse(res,404,{message:"Not found"})
     await prisma.shortUrl.delete({
         where:{
             shortUrl:shUrl
